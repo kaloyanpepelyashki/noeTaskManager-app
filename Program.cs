@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using noeTaskManager_app.Services;
 using noeTaskManager_app.Services.Interfaces;
 
@@ -7,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Register the AuthService as a service and pass down an HttpClient
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient<IAuthService, AuthService>();
+
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
-﻿using noeTaskManager_app.Models.AuthModels;
+﻿using Microsoft.AspNetCore.Http;
+using noeTaskManager_app.Models.AuthModels;
 using noeTaskManager_app.Services.Interfaces;
-using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
 
@@ -10,11 +10,38 @@ namespace noeTaskManager_app.Services
     {
         protected string _serverUrl;
         protected HttpClient _httpClient;
+        protected IHttpContextAccessor _httpContextAccessor;
 
-        public AuthService(HttpClient httpClient)
+        public AuthService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
             _serverUrl = "http://localhost:5000";
+        }
+
+        public void RegisterTokenCookie(string jwt)
+        {
+            var httpContext = _httpContextAccessor.HttpContext;
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTime.UtcNow.AddHours(1) //MUST ALWAYS MATCH TOKEN EXPIRATION
+            };
+
+            httpContext.Response.Cookies.Append("JWT", jwt, cookieOptions);
+        }
+
+        public string GetTokenCookie()
+        {
+            if( _httpContextAccessor.HttpContext.Request.Cookies.TryGetValue("JWT", out string token))
+            {
+                return token;
+            } else
+            {
+                return null;
+            }
         }
 
         
@@ -29,21 +56,35 @@ namespace noeTaskManager_app.Services
                     Password = password
                 };
 
-                var serilizedObject = JsonSerializer.Serialize(creds);
-                var data = new StringContent(serilizedObject, Encoding.UTF8, "application/json");
+                var serializedObject = JsonSerializer.Serialize(creds);
+                var data = new StringContent(serializedObject, Encoding.UTF8, "application/json");
 
 
                 HttpResponseMessage response = await _httpClient.PostAsync(endpoint, data);
                 response.EnsureSuccessStatusCode();
                 var responseBody = await response.Content.ReadAsStringAsync();
 
-                var deserilisedBody = JsonSerializer.Deserialize<SigninResponseObject>(responseBody);
+                var serializerOptions = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    PropertyNameCaseInsensitive = true
+                };
+                var deserialisedBody = JsonSerializer.Deserialize<SigninResponseObject>(responseBody, serializerOptions);
 
-                return deserilisedBody;
 
-            } catch(Exception e)
+                RegisterTokenCookie(deserialisedBody.AccessToken);
+
+                return deserialisedBody;
+
+            }
+            catch (HttpRequestException e)
             {
-                throw new Exception($"Error signing user in: {e}");
+                // Log and handle HTTP request errors specifically
+                throw new Exception($"Potentially network or server error when signing in: {e.Message}", e);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error signing user in: {e.Message}", e);
             }
         }
 
@@ -51,8 +92,26 @@ namespace noeTaskManager_app.Services
         {
             try
             {
-                await;
+                var endpoint = $"{_serverUrl}/signup";
+                var creds = new
+                {   
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Email = email,
+                    Password = password
+                };
+
+                var serializedObject = JsonSerializer.Serialize(creds);
+                var data = new StringContent(serializedObject, Encoding.UTF8, "application/json");
+
+
+                HttpResponseMessage response = await _httpClient.PostAsync(endpoint, data);
+
                 return true;
+
+            } catch(Exception e)
+            {
+                throw new Exception($"Error signing user up: {e.Message}", e);
             }
         }
 
