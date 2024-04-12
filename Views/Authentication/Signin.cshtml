@@ -1,7 +1,30 @@
-﻿
+﻿@model noeTaskManager_app.Models.AuthModels.SigninModel
 @{
     ViewData["Title"] = "Signin";
 }
 
-<h1>Signin</h1>
+<h1>Sign in</h1>
 
+@using (Html.BeginForm("AuthSignIn", "AuthenticationController", FormMethod.Post))
+{
+    /*<label for="Email">Email:</label>
+    <input type="email" name="Email" id="Email" required />*/
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">&#64;</span>
+        </div>
+        <input type="email" name="Email" id="Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">#</span>
+        </div>
+        <input type="password" name="Password" id="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+    </div>
+
+    /*<label for="Password">Password:</label>
+    <input type="password" name="Password" id="Password" required />*/
+
+    <button type="submit" class="btn btn-outline-success">Sign In</button>
+}

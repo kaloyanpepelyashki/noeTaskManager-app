@@ -1,7 +1,13 @@
+using noeTaskManager_app.Services;
+using noeTaskManager_app.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Register the AuthService as a service and pass down an HttpClient
+builder.Services.AddHttpClient<IAuthService, AuthService>();
 
 var app = builder.Build();
 

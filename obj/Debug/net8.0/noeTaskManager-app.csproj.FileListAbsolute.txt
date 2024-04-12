@@ -223,3 +223,4 @@ C:\Users\Kaloyan\Desktop\My Projects and works\Learning\C#\Solo\noeTaskManager-a
 C:\Users\Kaloyan\Desktop\My Projects and works\Learning\C#\Solo\noeTaskManager-app\noeTaskManager-app\obj\Debug\net8.0\noeTaskManager-app.pdb
 C:\Users\Kaloyan\Desktop\My Projects and works\Learning\C#\Solo\noeTaskManager-app\noeTaskManager-app\obj\Debug\net8.0\noeTaskManager-app.genruntimeconfig.cache
 C:\Users\Kaloyan\Desktop\My Projects and works\Learning\C#\Solo\noeTaskManager-app\noeTaskManager-app\obj\Debug\net8.0\ref\noeTaskManager-app.dll
+C:\Users\Kaloyan\Desktop\My Projects and works\Learning\C#\Solo\noeTaskManager-app\noeTaskManager-app\obj\Debug\net8.0\noeTaskManager-app.sourcelink.json

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using noeTaskManager_app.Models.AuthModels;
 
 namespace noeTaskManager_app.Controllers
 {
@@ -11,8 +12,22 @@ namespace noeTaskManager_app.Controllers
             _logger = logger;
         }
 
+       /* //Actions
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AuthSignIn()
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        } */
+
+        //Views 
         public IActionResult Signin()
         {
+         
+
             return View();
         }
 
