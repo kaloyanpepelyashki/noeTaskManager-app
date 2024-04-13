@@ -2,29 +2,29 @@
 @{
     ViewData["Title"] = "Signin";
 }
-
-<h1>Sign in</h1>
-
-@using (Html.BeginForm("AuthSignIn", "AuthenticationController", FormMethod.Post))
-{
-    /*<label for="Email">Email:</label>
-    <input type="email" name="Email" id="Email" required />*/
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">&#64;</span>
+<div class="h-70 ">
+    <h1>Sign in</h1>
+    @Html.ValidationSummary(true)
+    @using (Html.BeginForm("AuthSignIn", "Authentication", FormMethod.Post))
+    {
+     @Html.AntiForgeryToken()
+        <div class="input-group mb-3 w-25">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">&#64;</span>
+            </div>
+            @*<input type="email" name="Email" id="Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>*@ 
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Email", aria_label = "Email", required = "required" })
+            @Html.ValidationMessageFor(m => m.Email)
         </div>
-        <input type="email" name="Email" id="Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">#</span>
+        <div class="input-group mb-3 w-25">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">#</span>
+            </div>
+            @*<input type="password" name="Password" id="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>*@
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "Password", aria_label = "Password", required = "required" })
+            @Html.ValidationMessageFor(m => m.Password)
         </div>
-        <input type="password" name="Password" id="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
-    </div>
 
-    /*<label for="Password">Password:</label>
-    <input type="password" name="Password" id="Password" required />*/
-
-    <button type="submit" class="btn btn-outline-success">Sign In</button>
-}
+        <button type="submit" class="btn btn-outline-success">Sign In</button>
+    }
+</div>

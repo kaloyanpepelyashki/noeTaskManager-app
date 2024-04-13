@@ -16,7 +16,7 @@ namespace noeTaskManager_app.Services
         {
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
-            _serverUrl = "http://localhost:5000";
+            _serverUrl = "http://localhost:5241/api";
         }
 
         public void RegisterTokenCookie(string jwt)
@@ -71,10 +71,16 @@ namespace noeTaskManager_app.Services
                 };
                 var deserialisedBody = JsonSerializer.Deserialize<SigninResponseObject>(responseBody, serializerOptions);
 
+                if (deserialisedBody.AccessToken == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    RegisterTokenCookie(deserialisedBody.AccessToken);
 
-                RegisterTokenCookie(deserialisedBody.AccessToken);
-
-                return deserialisedBody;
+                    return deserialisedBody;
+                }
 
             }
             catch (HttpRequestException e)

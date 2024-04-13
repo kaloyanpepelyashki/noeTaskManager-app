@@ -6,5 +6,6 @@ namespace noeTaskManager_app.Services.Interfaces
     {
         Task<SigninResponseObject> SignIn(string email, string password);
         Task<bool> SignUp(string firstName, string lastName, string email, string password);
+        string GetTokenCookie();
     }
 }
