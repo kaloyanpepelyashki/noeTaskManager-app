@@ -4,8 +4,8 @@ namespace noeTaskManager_app.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task<SigninResponseObject> SignIn(string email, string password);
-        Task<bool> SignUp(string firstName, string lastName, string email, string password);
+        Task<(bool IsSuccess, SigninResponseObject signinResponseObject)> SignIn(string email, string password);
+        Task<(bool IsSuccess, UserCredsResponse userCredsResponse)> SignUp(string firstName, string lastName, string email, string password);
         string GetTokenCookie();
     }
 }

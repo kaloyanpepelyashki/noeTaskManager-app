@@ -16,7 +16,7 @@ namespace noeTaskManager_app.Services
         {
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
-            _serverUrl = "http://localhost:5241/api";
+            _serverUrl = "http://localhost:5241/api/Auth";
         }
 
         public void RegisterTokenCookie(string jwt)
@@ -45,15 +45,15 @@ namespace noeTaskManager_app.Services
         }
 
         
-        public async Task<SigninResponseObject> SignIn(string email, string password)
+        public async Task<(bool IsSuccess, SigninResponseObject signinResponseObject)> SignIn(string userEmail, string userPassword)
         {
             try
             {
                 var endpoint = $"{_serverUrl}/signin";
                 var creds = new
                 {
-                    Email = email,
-                    Password = password
+                    email = userEmail,
+                    password = userPassword
                 };
 
                 var serializedObject = JsonSerializer.Serialize(creds);
@@ -62,6 +62,7 @@ namespace noeTaskManager_app.Services
 
                 HttpResponseMessage response = await _httpClient.PostAsync(endpoint, data);
                 response.EnsureSuccessStatusCode();
+
                 var responseBody = await response.Content.ReadAsStringAsync();
 
                 var serializerOptions = new JsonSerializerOptions
@@ -69,19 +70,23 @@ namespace noeTaskManager_app.Services
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     PropertyNameCaseInsensitive = true
                 };
-                var deserialisedBody = JsonSerializer.Deserialize<SigninResponseObject>(responseBody, serializerOptions);
+                SigninResponseObject? deserialisedBody = JsonSerializer.Deserialize<SigninResponseObject>(responseBody, serializerOptions);
 
                 if (deserialisedBody.AccessToken == null)
                 {
-                    return null;
+                    return (false, null);
                 }
                 else
                 {
                     RegisterTokenCookie(deserialisedBody.AccessToken);
 
-                    return deserialisedBody;
+                    return (true, deserialisedBody);
                 }
 
+            }
+            catch (JsonException e)
+            {
+                throw new Exception("Failed to parse server response.", e);
             }
             catch (HttpRequestException e)
             {
@@ -94,17 +99,17 @@ namespace noeTaskManager_app.Services
             }
         }
 
-        public async Task<bool> SignUp(string firstName, string lastName, string email, string password)
+        public async Task<(bool IsSuccess, UserCredsResponse? userCredsResponse)> SignUp(string userFirstName, string userLastName, string userEmail, string userPassword)
         {
             try
             {
                 var endpoint = $"{_serverUrl}/signup";
                 var creds = new
                 {   
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Email = email,
-                    Password = password
+                    firstName = userFirstName,
+                    lastName = userLastName,
+                    email = userEmail,
+                    password = userPassword
                 };
 
                 var serializedObject = JsonSerializer.Serialize(creds);
@@ -112,10 +117,36 @@ namespace noeTaskManager_app.Services
 
 
                 HttpResponseMessage response = await _httpClient.PostAsync(endpoint, data);
+                response.EnsureSuccessStatusCode();
 
-                return true;
+                var responseBody = await response.Content.ReadAsStringAsync();
+                var serializerOptions = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    PropertyNameCaseInsensitive = true
+                };
+                UserCredsResponse? deserialisedBody = JsonSerializer.Deserialize<UserCredsResponse>(responseBody, serializerOptions);
 
-            } catch(Exception e)
+                if(deserialisedBody == null )
+                {
+                    return (false, null);
+
+                }else
+                {
+                    return (true, deserialisedBody);
+                }
+
+            }
+            catch (JsonException e)
+            {
+                throw new Exception("Failed to parse server response.", e);
+            }
+            catch (HttpRequestException e)
+            {
+                // Log and handle HTTP request errors specifically
+                throw new Exception($"Potentially network or server error when signing in: {e.Message}", e);
+            }
+            catch (Exception e)
             {
                 throw new Exception($"Error signing user up: {e.Message}", e);
             }

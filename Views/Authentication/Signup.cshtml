@@ -1,40 +1,47 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model noeTaskManager_app.Models.AuthModels.SignupModel
 @{
 }
 
-<h2>Sign Up</h2>
-
-@using (Html.BeginForm("AuthSignup", "Authentication", FormMethod.Post))
-{
-
-        <div class="form-row  align-items-center">
-            <div class="form-group col-md-6">
-                <input type="text" name="FistName" id="FirstName" class="form-control" placeholder="First name" required>
-            </div>
-            <div class="form-group col-md-6">
-                <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Last name" required>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">&#64;</span>
+<div class="h-70">
+    <h2>Sign Up</h2>
+    @Html.ValidationSummary(true)
+    @using (Html.BeginForm("AuthSignup", "Authentication", FormMethod.Post))
+    {
+            @Html.AntiForgeryToken()
+            <div class="form-row  align-items-center">
+                <div class="form-group col-md-6">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", type = "text", placeholder = "First Name", aria_label = "First Name", required = "required" })
+                @Html.ValidationMessageFor(m => m.FirstName)
                 </div>
-                <input type="email" name="Email" id="Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
-            </div>
-        </div>
-        <div class="form-group col-md-6">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">#</span>
+                <div class="form-group col-md-6">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", type = "text", placeholder = "Last Name", aria_label = "Last Name", required = "required" })
+                @Html.ValidationMessageFor(m => m.LastName)
                 </div>
-                <input type="password" name="Password" id="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
             </div>
-        </div>
+            <div class="form-group col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">&#64;</span>
+                    </div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Email", aria_label = "Email", required = "required" })
+                @Html.ValidationMessageFor(m => m.Email)
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">#</span>
+                    </div>
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "Password", aria_label = "Password", required = "required" })
+                @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
 
-        <button type="submit" class="btn btn-outline-success">Sign Up</button>
+            <button type="submit" class="btn btn-outline-success">Sign Up</button>
   
 
-}
+    }
+</div>
