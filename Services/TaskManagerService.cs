@@ -22,7 +22,7 @@ namespace noeTaskManager_app.Services
         {
             try
             {
-                var endpoint = $"{_serverUrl}/GetTask/All";
+                var endpoint = $"{_serverUrl}GetTask/all";
 
                 var response = await _httpClient.GetAsync(endpoint);
                 response.EnsureSuccessStatusCode();
