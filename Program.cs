@@ -10,6 +10,7 @@ builder.Services.AddControllersWithViews();
 //Register the AuthService as a service and pass down an HttpClient
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient<IAuthService, AuthService>();
+builder.Services.AddHttpClient<ITaskManagerService, TaskManagerService>();
 
 
 var app = builder.Build();

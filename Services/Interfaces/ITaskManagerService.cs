@@ -4,6 +4,6 @@ namespace noeTaskManager_app.Services.Interfaces
 {
     public interface ITaskManagerService
     {
-        Task<List<TaskItem>> GetAllTasks();
+        Task<(bool isSuccess, List<TaskItem>?)> GetAllTasks();
     }
 }
