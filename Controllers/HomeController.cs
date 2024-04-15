@@ -16,6 +16,39 @@ namespace noeTaskManager_app.Controllers
             _taskManagerService = taskManagerService;
         }
 
+        //Actions
+        public async Task<ActionResult> ActionCreateTask(CreateTask newTask)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("CreateTask", newTask);
+            }
+            try
+            {
+                var response = await _taskManagerService.InsertATask(newTask);
+
+                if (response)
+                {
+                    TempData["success"] = "Task was created successfuly";
+                    
+                    return RedirectToAction("Index");
+
+                } else
+                {
+                    //In case the API didn't respond with a success status code
+                    ModelState.AddModelError("", "Failed to create a task");
+                }
+            } catch(Exception e) 
+            {
+                _logger.LogError(e, "Error creating task");
+                ModelState.AddModelError("", "Error creating a task");
+            }
+
+            return View("CreateTask", newTask);
+        }
+
+
+        //Viewes
         public async Task<IActionResult> Index()
         {
             try
@@ -43,6 +76,12 @@ namespace noeTaskManager_app.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult CreateTask()
+        {
+            TempData["Success"] = null;
             return View();
         }
 

@@ -1,5 +1,6 @@
 ﻿using noeTaskManager_app.Models;
 using noeTaskManager_app.Services.Interfaces;
+using System.Text;
 using System.Text.Json;
 using static System.Net.WebRequestMethods;
 
@@ -52,11 +53,56 @@ namespace noeTaskManager_app.Services
             catch (HttpRequestException e)
             {
                 // Log and handle HTTP request errors specifically
-                throw new Exception($"Potentially network or server error when signing in: {e.Message}", e);
+                throw new Exception($"Potentially network or server error when retreiving tasks: {e.Message}", e);
             }
             catch (Exception e)
             {
                 throw new Exception($"Error getting list of all products: {e.Message}", e);
+            }
+        }
+
+        public async Task<bool> InsertATask(CreateTask newTask)
+        {
+            try
+            {
+                var endpoint = $"{_serverUrl}CreateTask";
+                var taskProperties = new
+                {
+                    summary = newTask.Summary,
+                    description = newTask.Description,
+                    priority = newTask.Priority,
+                    dueDate = newTask.DueDate,
+                };
+
+                var serializedObject = JsonSerializer.Serialize(taskProperties);
+                var data = new StringContent(serializedObject, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync(endpoint, data);
+                response.EnsureSuccessStatusCode();
+
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                if(responseBody == "Task created")
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+
+            }
+            catch (JsonException e)
+            {
+                throw new Exception("Failed to parse server response.", e);
+            }
+            catch (HttpRequestException e)
+            {
+                // Log and handle HTTP request errors specifically
+                throw new Exception($"Potentially network or server error when creating a task: {e.Message}", e);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error creating a new task: {e.Message}", e);
             }
         }
     }

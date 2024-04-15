@@ -1,0 +1,40 @@
+﻿@model noeTaskManager_app.Models.CreateTask;
+@{
+}
+
+<h2>Create a task</h2>
+
+@if (TempData["success"] != null)
+{
+    <script>
+        window.onload = function () {
+            alert('@TempData["success"]');
+        };
+    </script>
+}
+
+@using (Html.BeginForm("ActionCreateTask", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-row  align-items-center">
+        <div class="form-group col-md-6">
+            @Html.TextBoxFor(m => m.Summary, new { @class = "form-control", type = "text", placeholder = "Summary", aria_label = "Task Summary", required = "required" })
+            @Html.ValidationMessageFor(m => m.Summary)
+        </div>
+        <div class="form-group col-md-6">
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control", type = "text", placeholder = "Description", aria_label = "Task Description", required = "required" })
+            @Html.ValidationMessageFor(m => m.Description)
+        </div>
+        <div class="form-group col-md-6">
+            @Html.TextBoxFor(m => m.Priority, new { @class = "form-control", type = "text", placeholder = "Priority", aria_label = "Task Priority", required = "required" })
+            @Html.ValidationMessageFor(m => m.Priority)
+        </div>
+        <div class="form-group col-md-6">
+            @Html.TextBoxFor(m => m.DueDate, new { @class = "form-control", type = "text", placeholder = "Due Date", aria_label = "Task Due", required = "required" })
+            @Html.ValidationMessageFor(m => m.Priority)
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-success">Create</button>
+
+}

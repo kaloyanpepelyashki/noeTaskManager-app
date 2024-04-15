@@ -35,7 +35,9 @@ namespace noeTaskManager_app.Controllers
                 //Checks if there was a response back and if a token was registered
                 if (response.IsSuccess && response.signinResponseObject != null && !tokenIsValid)
                 {
-                    return RedirectToAction("Index", "Home");
+                    
+                    return RedirectToAction("Home");
+               
                 }
                 else
                 {
@@ -54,6 +56,8 @@ namespace noeTaskManager_app.Controllers
             return View("Signin", signinCreds);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AuthSignUp(SignupModel signupCreds)
         {
             if (!ModelState.IsValid)
