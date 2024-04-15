@@ -6,5 +6,6 @@ namespace noeTaskManager_app.Services.Interfaces
     {
         Task<(bool isSuccess, List<TaskItem>?)> GetAllTasks();
         Task<bool> InsertATask(CreateTask newTask);
+        Task<bool> DeleteATask(string targetTaskKey);
     }
 }

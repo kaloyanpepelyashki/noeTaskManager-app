@@ -7,6 +7,13 @@
 {
     <div class="error-message">@ViewData["ErrorMessage"]</div>
 }
+
+@if(TempData["success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["success"]
+    </div>
+}
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -28,7 +35,35 @@
                     <td>@tasks[i].Description</td>
                     <td>@tasks[i].Priority</td>
                     <td>@tasks[i].DueDate</td>
+                    <td><button id="deleteButton" data-id="@tasks[i].TaskKey">delete</button></td>
                 </tr>
             }
         }
     </tbody>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $(".deleteButton").on("click", function () {
+                var btn = $(this); 
+                var taskKey = btn.data('id'); 
+                $.ajax({
+                    url: '@Url.Action("ActionDeleteTask", "Home")', 
+                    method: "POST",
+                    data: { taskKey: taskKey },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#task-row-' + taskKey).remove(); 
+                            alert(response.message);
+                        } else {
+                            alert('Something went wrong. Please try again.');
+                        }
+                    },
+                    error: function () {
+                        alert('Error while deleting. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>

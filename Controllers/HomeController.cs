@@ -17,6 +17,7 @@ namespace noeTaskManager_app.Controllers
         }
 
         //Actions
+        [HttpPost]
         public async Task<ActionResult> ActionCreateTask(CreateTask newTask)
         {
             if (!ModelState.IsValid)
@@ -29,7 +30,7 @@ namespace noeTaskManager_app.Controllers
 
                 if (response)
                 {
-                    TempData["success"] = "Task was created successfuly";
+                    TempData["success"] = "Task was created successfully";
                     
                     return RedirectToAction("Index");
 
@@ -45,6 +46,34 @@ namespace noeTaskManager_app.Controllers
             }
 
             return View("CreateTask", newTask);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ActionDeleteTask(string taskKey)
+        {
+            try
+            {
+                var response = await _taskManagerService.DeleteATask(taskKey);
+
+                if(response)
+                {
+                    TempData["success"] = "Task deleted successfully";
+                    return View("Index");
+
+                } else
+                {
+                    //In case the API didn't respond with a success status code
+                    ModelState.AddModelError("", "Failed to delete a task, try again later");
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error deleting task");
+                ModelState.AddModelError("", "Error deleting  task");
+            }
+
+            return View("Index");
         }
 
 

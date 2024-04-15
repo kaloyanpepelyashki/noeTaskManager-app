@@ -105,5 +105,35 @@ namespace noeTaskManager_app.Services
                 throw new Exception($"Error creating a new task: {e.Message}", e);
             }
         }
+
+        public async Task<bool> DeleteATask(string targetTaskKey)
+        {
+            try
+            {
+                var endpoint = $"{_serverUrl}deleteByKey/{targetTaskKey}";
+
+                var response = await _httpClient.DeleteAsync(endpoint);
+
+                var responseBody = await response.Content.ReadAsStringAsync();
+                if(responseBody == "Task was deleted")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (HttpRequestException e)
+            {
+                // Log and handle HTTP request errors specifically
+                throw new Exception($"Potentially network or server error when creating a task: {e.Message}", e);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error creating a new task: {e.Message}", e);
+            }
+        }
     }
 }
