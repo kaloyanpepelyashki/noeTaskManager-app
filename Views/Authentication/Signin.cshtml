@@ -1,5 +1,6 @@
 ﻿@model noeTaskManager_app.Models.AuthModels.SigninModel
 @{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
     ViewData["Title"] = "Signin";
 }
 <div class="h-70 ">
@@ -26,5 +27,6 @@
         </div>
 
         <button type="submit" class="btn btn-outline-success">Sign In</button>
+        <p>No account?<a class="btn btn-link" asp-controller="Authentication" asp-action="Signup">Sign up</a></p>
     }
 </div>

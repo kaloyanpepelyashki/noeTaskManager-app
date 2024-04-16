@@ -39,16 +39,16 @@
         <tbody>
             @if(ViewData["tasks"] != null)
             {
-                @for(var i = 0; i < tasks.Count; i++)
+                @for (var i = 0; i < tasks.Count; i++)
                 {
-
+                    var index = i + 1; 
                     <tr id="task-row-@tasks[i].TaskKey">
-                        <th scope="row text-start">@i</th>
+                        <th scope="row text-start">@index</th>
                         <td>@tasks[i].Summary</td>
                         <td>@tasks[i].Description</td>
                         <td>@tasks[i].Priority</td>
                         <td>@tasks[i].DueDate</td>
-                        <td><button class="deleteButton" data-id="@tasks[i].TaskKey">delete</button></td>
+                        <td><button class="deleteButton btn btn-outline-danger" data-id="@tasks[i].TaskKey">delete</button> <button class="btn btn-outline-info">Update</button></td>
                     </tr>
                 }
             }

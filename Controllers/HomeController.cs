@@ -83,6 +83,7 @@ namespace noeTaskManager_app.Controllers
         {
             try
             {
+                TempData["success"] = null;
                 (bool isSuccess, List<TaskItem>? tasksList) tasks = await _taskManagerService.GetAllTasks();
 
                 if (tasks.isSuccess)
@@ -102,11 +103,6 @@ namespace noeTaskManager_app.Controllers
                 return View();
             }
 
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         public IActionResult CreateTask()

@@ -36,7 +36,7 @@ namespace noeTaskManager_app.Controllers
                 if (response.IsSuccess && response.signinResponseObject != null && !tokenIsValid)
                 {
                     
-                    return RedirectToAction("Home");
+                    return RedirectToAction("Index", "Home");
                
                 }
                 else
