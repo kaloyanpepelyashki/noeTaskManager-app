@@ -14,40 +14,57 @@
         @TempData["success"]
     </div>
 }
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Summary</th>
-            <th scope="col">Description</th>
-            <th scope="col">Priority</th>
-            <th scope="col">Due</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(ViewData["tasks"] != null)
-        {
-            @for(var i = 0; i < tasks.Count; i++)
-            {
-                <tr>
-                    <th scope="row text-start">@i</th>
-                    <td>@tasks[i].Summary</td>
-                    <td>@tasks[i].Description</td>
-                    <td>@tasks[i].Priority</td>
-                    <td>@tasks[i].DueDate</td>
-                    <td><button id="deleteButton" data-id="@tasks[i].TaskKey">delete</button></td>
-                </tr>
-            }
-        }
-    </tbody>
 
+<div class="d-flex flex-column align-items-center">
+    <div class="w-100 d-flex flex-column  align-items-end justify-content-center">
+        <a class="text-dark h2" asp-controller="Home" asp-action="CreateTask">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle h2" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+            </svg>
+        </a>
+        Add Task
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Summary</th>
+                <th scope="col">Description</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Due</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(ViewData["tasks"] != null)
+            {
+                @for(var i = 0; i < tasks.Count; i++)
+                {
+
+                    <tr id="task-row-@tasks[i].TaskKey">
+                        <th scope="row text-start">@i</th>
+                        <td>@tasks[i].Summary</td>
+                        <td>@tasks[i].Description</td>
+                        <td>@tasks[i].Priority</td>
+                        <td>@tasks[i].DueDate</td>
+                        <td><button class="deleteButton" data-id="@tasks[i].TaskKey">delete</button></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
 
     <script>
         $(document).ready(function () {
             $(".deleteButton").on("click", function () {
-                var btn = $(this); 
-                var taskKey = btn.data('id'); 
+                let btn = $(this); 
+                let taskKey = btn.data('id'); 
+
+                console.log(btn)
+                console.log(taskKey);
                 $.ajax({
                     url: '@Url.Action("ActionDeleteTask", "Home")', 
                     method: "POST",

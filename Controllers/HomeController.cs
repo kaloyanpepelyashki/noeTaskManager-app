@@ -58,12 +58,13 @@ namespace noeTaskManager_app.Controllers
                 if(response)
                 {
                     TempData["success"] = "Task deleted successfully";
-                    return View("Index");
+                    return StatusCode(200, new { success = true, message = "task deleted"}) ;
 
                 } else
                 {
                     //In case the API didn't respond with a success status code
                     ModelState.AddModelError("", "Failed to delete a task, try again later");
+                    return BadRequest();
                 }
 
             }

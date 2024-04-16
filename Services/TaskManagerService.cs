@@ -110,7 +110,7 @@ namespace noeTaskManager_app.Services
         {
             try
             {
-                var endpoint = $"{_serverUrl}deleteByKey/{targetTaskKey}";
+                var endpoint = $"{_serverUrl}DeleteTask/deleteByKey/{targetTaskKey}";
 
                 var response = await _httpClient.DeleteAsync(endpoint);
 
