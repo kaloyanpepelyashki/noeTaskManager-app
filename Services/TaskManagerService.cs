@@ -1,8 +1,9 @@
 ﻿using noeTaskManager_app.Models;
 using noeTaskManager_app.Services.Interfaces;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using static System.Net.WebRequestMethods;
+
 
 namespace noeTaskManager_app.Services
 {
@@ -11,12 +12,18 @@ namespace noeTaskManager_app.Services
         protected string _serverUrl;
         protected HttpClient _httpClient;
         protected IHttpContextAccessor _httpContextAccessor;
+        protected IAuthService _authService;
 
-        public TaskManagerService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        public TaskManagerService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IAuthService authenticationService)
         {
             _serverUrl = "http://localhost:5241/api/";
-            _httpClient = httpClient;
+
+            _authService = authenticationService;
+
             _httpContextAccessor = httpContextAccessor;
+            _httpClient = httpClient;
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.GetTokenCookie());
         }
 
         public async Task<(bool isSuccess, List<TaskItem>?)> GetAllTasks()
