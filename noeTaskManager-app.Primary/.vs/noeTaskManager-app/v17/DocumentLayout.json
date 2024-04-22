@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BCDB0A1E-803A-4F10-BD7D-7F70ADBC2DA0}|..\\noeTaskManager-app.Test\\noeTaskManager-app.Test.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.test\\authservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCDB0A1E-803A-4F10-BD7D-7F70ADBC2DA0}|..\\noeTaskManager-app.Test\\noeTaskManager-app.Test.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.test\\taskmanagerservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.primary\\services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCDB0A1E-803A-4F10-BD7D-7F70ADBC2DA0}|..\\noeTaskManager-app.Test\\noeTaskManager-app.Test.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthServiceTest.cs",
+              "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\AuthServiceTest.cs",
+              "RelativeDocumentMoniker": "..\\noeTaskManager-app.Test\\AuthServiceTest.cs",
+              "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\AuthServiceTest.cs",
+              "RelativeToolTip": "..\\noeTaskManager-app.Test\\AuthServiceTest.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAABgAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T15:08:03.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TaskManagerService.cs",
+              "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\Services\\TaskManagerService.cs",
+              "RelativeDocumentMoniker": "Services\\TaskManagerService.cs",
+              "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\Services\\TaskManagerService.cs",
+              "RelativeToolTip": "Services\\TaskManagerService.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAAACIAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T12:53:52.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskManagerServiceTest.cs",
+              "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
+              "RelativeDocumentMoniker": "..\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
+              "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
+              "RelativeToolTip": "..\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAACQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T12:55:22.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\noeTaskManager-app.Test\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\UnitTest1.cs",
+              "RelativeToolTip": "..\\noeTaskManager-app.Test\\UnitTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T16:37:05.752Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
