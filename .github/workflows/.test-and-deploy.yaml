@@ -21,6 +21,6 @@ jobs:
     - name: Install all dependencies
       run: dotnet restore
     - name: Build
-      run: dotner build --no-restore
+      run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
