@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup .Net
-        uses: actions/set-up-dotnet@v4
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.x"
       - name: Install all dependencies
