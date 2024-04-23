@@ -46,7 +46,7 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
 
       - name: Build and push Docker image to Docker hub
-        uses: dockler/build-push-action@v5
+        uses: docker/build-push-action@v5
         with:
           context: ./noeTaskManager-app.Primary
           file: ./noeTaskManager-app.Primary/Dockerfile
