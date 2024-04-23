@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.primary\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.primary\\services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BCDB0A1E-803A-4F10-BD7D-7F70ADBC2DA0}|..\\noeTaskManager-app.Test\\noeTaskManager-app.Test.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.test\\authservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -10,15 +18,11 @@
       "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.primary\\services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.primary\\models\\authmodels\\signinresponseobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:models\\authmodels\\signinresponseobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BCDB0A1E-803A-4F10-BD7D-7F70ADBC2DA0}|..\\noeTaskManager-app.Test\\noeTaskManager-app.Test.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.test\\taskmanagerservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|c:\\users\\kaloyan\\desktop\\my projects and works\\learning\\c#\\solo\\noetaskmanager-app\\noetaskmanager-app\\noetaskmanager-app.primary\\models\\authmodels\\signinresponseobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96B0EAD0-19AD-45AD-A283-461047CE19BA}|noeTaskManager-app.csproj|solutionrelative:models\\authmodels\\signinresponseobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,17 +32,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-23T15:43:49.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService.cs",
               "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\Services\\AuthService.cs",
               "RelativeToolTip": "Services\\AuthService.cs",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAAAGcAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-23T14:27:48.622Z",
               "EditorCaption": ""
@@ -58,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AuthServiceTest.cs",
               "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\AuthServiceTest.cs",
               "RelativeDocumentMoniker": "..\\noeTaskManager-app.Test\\AuthServiceTest.cs",
@@ -71,20 +88,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "TaskManagerService.cs",
               "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\Services\\TaskManagerService.cs",
               "RelativeDocumentMoniker": "Services\\TaskManagerService.cs",
               "ToolTip": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Primary\\Services\\TaskManagerService.cs",
               "RelativeToolTip": "Services\\TaskManagerService.cs",
-              "ViewState": "AQIAAEkAAAAAAAAAAAAAACIAAAAQAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-22T12:53:52.107Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "TaskManagerServiceTest.cs",
               "DocumentMoniker": "C:\\Users\\Kaloyan\\Desktop\\My Projects and works\\Learning\\C#\\Solo\\noeTaskManager-app\\noeTaskManager-app\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
               "RelativeDocumentMoniker": "..\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
@@ -92,8 +109,7 @@
               "RelativeToolTip": "..\\noeTaskManager-app.Test\\TaskManagerServiceTest.cs",
               "ViewState": "AQIAAFYAAAAAAAAAAAAAAFEAAACEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T12:55:22.474Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-22T12:55:22.474Z"
             }
           ]
         }

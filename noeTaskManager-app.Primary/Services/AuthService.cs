@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using noeTaskManager_app.Models.AuthModels;
 using noeTaskManager_app.Services.Interfaces;
 using System.Text;
@@ -11,12 +12,14 @@ namespace noeTaskManager_app.Services
         protected string _serverUrl;
         protected HttpClient _httpClient;
         protected IHttpContextAccessor _httpContextAccessor;
+        protected readonly IConfiguration _configuration;
 
         public AuthService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
-        {
+        {   
+            _configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().Build();
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
-            _serverUrl = "http://localhost:5241/api/Auth";
+            _serverUrl = $"{_configuration["Environment:ServerUrl"]}/Auth";
         }
 
         public void RegisterTokenCookie(string jwt)

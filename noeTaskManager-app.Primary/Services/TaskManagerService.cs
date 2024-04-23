@@ -13,16 +13,16 @@ namespace noeTaskManager_app.Services
         protected HttpClient _httpClient;
         protected IHttpContextAccessor _httpContextAccessor;
         protected IAuthService _authService;
+        private readonly IConfiguration _configuration;
 
         public TaskManagerService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IAuthService authenticationService)
         {
-            _serverUrl = "http://localhost:5241/api/";
+            _configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().Build();
 
+            _serverUrl = $"{_configuration["Environment:ServerUrl"]}/";
             _authService = authenticationService;
-
             _httpContextAccessor = httpContextAccessor;
             _httpClient = httpClient;
-
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.GetTokenCookie());
         }
 

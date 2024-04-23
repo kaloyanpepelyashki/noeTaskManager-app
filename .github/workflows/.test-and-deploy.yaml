@@ -24,3 +24,43 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal
+
+  build_and_deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set upp .Net
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Set up Docker Build
+        uses: docker/setup-buildix-action@v3
+
+      - name: Log in to Docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
+
+      - name: Build and push Docker image to Docker hub
+        uses: dockler/build-push-action@v5
+        with:
+          context: ./noeTaskManager-app.Primary
+          file: ./noeTaskManager-app.Primary/Dockerfile
+          push: true
+          tags: ${{secrets.Docker_USERNAME}}/noetaskmanager-app:latest
+
+      - name: Deploy to Render
+        run: |
+          curl -X PATCH \
+            https://api.render.com/v1/services/${{secrets.RENDER_SERVICE_ID}} \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"image": "${{secrets.DOCKER_USERNAME}}/noetaskmanager-app:latest"}'
+
+      - name: Cleanup
+        if: always()
+        run: docker rmi ${{secrets.DOCKER_USERNAME}}/noetaskmanager-app:latest
