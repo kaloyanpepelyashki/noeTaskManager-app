@@ -31,6 +31,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set upp .Net
         uses: actions/setup-dotnet@v4
         with:
@@ -48,7 +50,7 @@ jobs:
       - name: Build and push Docker image to Docker hub
         uses: docker/build-push-action@v5
         with:
-          context: ./noeTaskManager-app.Primary
+          context: .
           file: ./noeTaskManager-app.Primary/Dockerfile
           push: true
           tags: ${{secrets.Docker_USERNAME}}/noetaskmanager-app:latest

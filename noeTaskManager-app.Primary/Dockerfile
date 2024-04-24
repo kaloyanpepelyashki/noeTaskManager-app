@@ -10,7 +10,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["noeTaskManager-app.Primary/noeTaskManager-app.csproj", "."]
 RUN dotnet restore "./noeTaskManager-app.csproj"
-COPY . .
+COPY ["noeTaskManager-app.Primary/", "."]
 RUN dotnet build "./noeTaskManager-app.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
