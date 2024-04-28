@@ -63,6 +63,3 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{"image": "${{secrets.DOCKER_USERNAME}}/noetaskmanager-app:latest"}'
 
-      - name: Cleanup
-        if: always()
-        run: docker rmi ${{secrets.DOCKER_USERNAME}}/noetaskmanager-app
