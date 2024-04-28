@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
 
     defaults:
@@ -26,7 +26,7 @@ jobs:
         run: dotnet test --no-build --verbosity normal
 
   build_and_deploy:
-    needs: build
+    needs: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -62,4 +62,3 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
             -H "Content-Type: application/json" \
             -d '{"image": "${{secrets.DOCKER_USERNAME}}/noetaskmanager-app:latest"}'
-
